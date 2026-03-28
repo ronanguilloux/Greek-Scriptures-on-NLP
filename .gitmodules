@@ -1,0 +1,3 @@
+[submodule "STEPBible-Data"]
+	path = STEPBible-Data
+	url = https://github.com/STEPBible/STEPBible-Data.git
