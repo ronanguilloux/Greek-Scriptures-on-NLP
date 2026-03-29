@@ -36,16 +36,16 @@ Due to strict dependency requirements for the OdyCy model, it is recommended to 
 
 ## Setup
 
-1. **Delete any existing broken environments (if applicable):**
+1. **Install the environment and dependencies using Make:**
 
 ```bash
-rm -rf .venv
-python3.12 -m venv .venv
+make install
+```
+
+2. **Activate the virtual environment:**
+
+```bash
 source .venv/bin/activate
-pip install -U pip setuptools wheel -r requirements.txt
-curl -L -o grc_odycy_joint_trf-0.7.0-py3-none-any.whl "https://huggingface.co/chcaa/grc_odycy_joint_trf/resolve/main/grc_odycy_joint_trf-0.7.0-py3-none-any.whl"
-pip install ./grc_odycy_joint_trf-0.7.0-py3-none-any.whl
-rm grc_odycy_joint_trf-0.7.0-py3-none-any.whl
 ```
 
 ## Verifying Setup
