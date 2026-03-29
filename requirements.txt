@@ -1,0 +1,18 @@
+# Jupyter setup
+ipykernel
+jupyter
+
+# NLP libraries
+spacy==3.7.5
+spacy[transformers,apple]==3.7.5
+cupy-wheel
+
+# Data & Analysis
+pandas
+requests
+matplotlib
+seaborn
+folium
+
+# Custom transformer models
+# Model is installed manually via the instructions in README.md
