@@ -6,21 +6,32 @@ This project uses `spaCy` and the OdyCy Transformer model for Ancient Greek, opt
 
 This repository includes several Jupyter notebooks designed to demonstrate and analyze Ancient Greek texts using different approaches:
 
-- [John_Person_Names_Frequency.ipynb](./John_Person_Names_Frequency.ipynb): Generates a frequency list of person names in the Gospel of John, sorted by how often they appear using the `odyCy` model.
+- [Mark_4_14_Dependency_Visualization.ipynb](./Mark_4_14_Dependency_Visualization.ipynb): Renders a visual diagram of the grammatical structure of a single Greek verse (Mark 4:14 — "The farmer sows the word"), showing which words depend on which — like a sentence diagram. A good entry point for understanding how Ancient Greek syntax works.
+  *Technical:* Dependency parsing via `spaCy` with the `grc_odycy_joint_trf` transformer model. Visualization rendered inline using `displaCy`.
 
-- [Mark_Person_Names_Frequency.ipynb](./Mark_Person_Names_Frequency.ipynb): Uses the `grc_odycy_joint_trf` model to count the frequency of proper nouns in the Gospel of Mark.
+- [Mark_Person_Names_Frequency.ipynb](./Mark_Person_Names_Frequency.ipynb): Produces a frequency ranking of all personal names in the Gospel of Mark, making it easy to see at a glance who dominates the narrative and who appears only briefly.
+  *Technical:* Named entity / POS tagging (`PROPN`) via `spaCy` + `grc_odycy_joint_trf`. Frequencies counted with `collections.Counter`. English translations resolved via STEPBible TIPNR lexicon.
 
-- [Mark_Places_Names-Geoloc.ipynb](./Mark_Places_Names-Geoloc.ipynb): Extracts proper nouns in the Gospel of Mark using the `grc_odycy_joint_trf` model, then cross-references them with the `STEPBible-Data` places dataset to identify geographical locations and extract their coordinates, mapping these ancient locations using `folium`.
+- [Mark_Places_Names-Geoloc.ipynb](./Mark_Places_Names-Geoloc.ipynb): Extracts every place name from the Gospel of Mark and plots them on an interactive map, letting you visually trace Jesus’s journeys across ancient Galilee, Judea, and surrounding regions.
+  *Technical:* Place name extraction via POS tagging (`spaCy` + `grc_odycy_joint_trf`). Coordinates sourced from STEPBible places dataset. Interactive map rendered with `folium`.
 
-- [Mark_Top_Ten_Verbs.ipynb](./Mark_Top_Ten_Verbs.ipynb): A brief analysis identifying and visualizing the ten most frequently occurring verbs in the Gospel of Mark using the `grc_odycy_joint_trf` model.
+- [Mark_Top_Ten_Verbs.ipynb](./Mark_Top_Ten_Verbs.ipynb): Identifies the ten most-used verbs in the Gospel of Mark, giving a quick window into the book’s action-driven style — Mark’s Greek is famously fast-paced and verb-heavy.
+  *Technical:* Lemmatization and POS filtering (`VERB`) via `spaCy` + `grc_odycy_joint_trf`. Frequency ranking with `pandas`, visualized as a bar chart with `matplotlib`.
 
-- [Mark_Vocabulary_Coverage.ipynb](./Mark_Vocabulary_Coverage.ipynb): Analyzes the vocabulary of the Gospel of Mark to determine the number of unique words (lemmas) needed to reach different comprehension thresholds. It demonstrates the Pareto principle in language learning, showing that mastering just 215 unique words yields 80% comprehension of the entire book, making it an excellent resource for beginners studying Ancient Greek.
+- [Mark_Vocabulary_Coverage.ipynb](./Mark_Vocabulary_Coverage.ipynb): Answers the question every Greek learner asks: "How many words do I actually need to know?" It turns out that mastering just 215 unique words gives you 80% comprehension of Mark — a motivating benchmark for beginners studying Ancient Greek.
+  *Technical:* Lemma-based vocabulary analysis via `spaCy` + `grc_odycy_joint_trf`. Coverage curve computed with `pandas` (cumulative frequency thresholds at 50%, 60%, 75%, 80%, 90%), visualized with `matplotlib`.
 
-- [TANTT.ipynb](./TANTT.ipynb): Demonstrates how to load, parse, and explore the **Translators Amalgamated Greek NT (TAGNT)** dataset. It takes raw text files containing the entire New Testament and converts them into a clean, searchable table (DataFrame) with user-friendly labels (Bible Reference, Greek Text, Lemma, Strong's Number, and full explicit Grammar/Morphology descriptions). Perfect for non-specialists wanting to search specific verses like John 1:1.
+- [John_Person_Names_Frequency.ipynb](./John_Person_Names_Frequency.ipynb): Generates a ranked list of every person mentioned in the Gospel of John, showing which figures appear most often — from Jesus and Peter down to minor characters. A useful reference for readers wanting to understand the cast and relative prominence of each figure.
+  *Technical:* Frequency analysis using `collections.Counter`. Resolves Greek proper nouns to English names via STEPBible TIPNR lexicon (Strong’s number lookup). No spaCy/ML involved — pure data parsing with `pandas`.
+  
+- [TANTT.ipynb](./TANTT.ipynb): Transforms the raw Tyndale Amalgamated Greek New Testament (TAGNT) data files into a clean, searchable table. Anyone can look up a verse like John 1:1 and instantly see each Greek word alongside its root form, Strong’s number, and a plain-English grammatical label.
+  *Technical:* File parsing and DataFrame construction with `pandas`. Morphological codes expanded via dictionary lookup against STEPBible TAGNT/TBESG files. No ML/NLP model used.
 
-- [Mt4_Deut6_8_Analysis.ipynb](./Mt4_Deut6_8_Analysis.ipynb): An advanced NLP analysis notebook. It uses the `odyCy` transformer model to identify and analyze intertextual relationships (explicit quotes, allusions, keyword echoes) between the Greek Septuagint (LXX) version of Deuteronomy 6-8 and the Gospel of Matthew 4. 
+- [Mt4_Deut6_8_Analysis.ipynb](./Mt4_Deut6_8_Analysis.ipynb): Investigates the literary relationship between Deuteronomy 6–8 (Greek Septuagint) and Matthew 4 — the temptation narrative. The notebook detects exact quotations, thematic echoes, and vocabulary overlap, making visible the intertextual fabric that a Greek reader would have recognized.
+  *Technical:* Three-method intertextual analysis: (1) exact n-gram matching for citations, (2) keyword density analysis, (3) cosine similarity on transformer embeddings for semantic overlap. Powered by `spaCy` + `grc_odycy_joint_trf`. Custom Greek stopword list; results presented via `pandas` DataFrames.
 
-- [test.ipynb](./test.ipynb): A basic testing and demonstration notebook showing how to set up and process Ancient Greek text (like the Gospel of Mark) using the `spaCy` framework and the `odyCy` transformer model.
+- [test.ipynb](./test.ipynb): A minimal working example showing how to load Ancient Greek text and extract basic linguistic information — tokens, lemmas, and parts of speech. A good starting point before diving into the more specialized notebooks.
+  *Technical:* Basic tokenization, lemmatization, and POS tagging via `spaCy` + `grc_odycy_joint_trf` on GPU (Apple MPS). Verifies model setup and hardware availability.
 
 ## Step Data
 
