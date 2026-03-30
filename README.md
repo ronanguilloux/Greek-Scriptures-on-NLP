@@ -1,6 +1,23 @@
-# Installation Instructions
+# Jupyter Notebook NT, Ancient Greek and NLP. 
 
-This project uses `spaCy` and the OdyCy Transformer model for Ancient Greek, optimized for Apple Silicon (MPS).
+What the Sheol is that? 🤣 
+
+- 🏛 Ancient Greek NT original texts
+- 🤖 Natural Language Processing (NLP) Python libraries 
+
+This project uses `spaCy` Python lib and and the [OdyCy Transformer model](https://centre-for-humanities-computing.github.io/odyCy/) ([Hugginface](https://huggingface.co/chcaa/grc_odycy_joint_trf), [Github](https://github.com/centre-for-humanities-computing/odyCy)) for Ancient Greek.
+
+[`spaCy`](https://spacy.io/) is an industrial-strength, production-ready Python library for advanced Natural Language Processing (NLP). It leverages optimized pipelines and pre-trained transformer models to deliver high-performance tokenization, Named Entity Recognition (NER), and dependency parsing at scale.
+
+[OdyCy](https://centre-for-humanities-computing.github.io/odyCy/) is extending `spaCy`: it's a transformer-based NLP library for Ancient Greek, capable of part-of-speech tagging, morphological analysis, dependency parsing, lemmatization and more.
+
+[`Jupyter`](https://jupyter.org/) Notebook is an open-source, web-based interactive computing environment that enables developers to integrate live code, narrative documentation, and rich-media visualizations into a single reproducible document for data science and machine learning workflows. See [https://developers.google.com/colab](https://developers.google.com/colab) (can leverages GDrive-hosted notebooks).
+
+Python is the more indented than any beast of the Shell, but has nothing to do with Gn 3:1.
+
+### Performances
+
+On a Macbook Air M4 / 16 Go, the parsing of the full Mark (Greek) text takes only ~8 seconds.
 
 ## Project Notebooks
 
