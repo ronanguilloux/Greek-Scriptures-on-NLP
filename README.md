@@ -6,15 +6,19 @@ This project uses `spaCy` and the OdyCy Transformer model for Ancient Greek, opt
 
 This repository includes several Jupyter notebooks designed to demonstrate and analyze Ancient Greek texts using different approaches:
 
-- [TANTT.ipynb](./TANTT.ipynb): Demonstrates how to load, parse, and explore the **Translators Amalgamated Greek NT (TAGNT)** dataset. It takes raw text files containing the entire New Testament and converts them into a clean, searchable table (DataFrame) with user-friendly labels (Bible Reference, Greek Text, Lemma, Strong's Number, and full explicit Grammar/Morphology descriptions). Perfect for non-specialists wanting to search specific verses like John 1:1.
-
-- [Mt4_Deut6_8_Analysis.ipynb](./Mt4_Deut6_8_Analysis.ipynb): An advanced NLP analysis notebook. It uses the `odyCy` transformer model to identify and analyze intertextual relationships (explicit quotes, allusions, keyword echoes) between the Greek Septuagint (LXX) version of Deuteronomy 6-8 and the Gospel of Matthew 4. 
-
 - [John_Person_Names_Frequency.ipynb](./John_Person_Names_Frequency.ipynb): Generates a frequency list of person names in the Gospel of John, sorted by how often they appear using the `odyCy` model.
 
 - [Mark_Person_Names_Frequency.ipynb](./Mark_Person_Names_Frequency.ipynb): Uses the `grc_odycy_joint_trf` model to count the frequency of proper nouns in the Gospel of Mark.
 
 - [Mark_Places_Names-Geoloc.ipynb](./Mark_Places_Names-Geoloc.ipynb): Extracts proper nouns in the Gospel of Mark using the `grc_odycy_joint_trf` model, then cross-references them with the `STEPBible-Data` places dataset to identify geographical locations and extract their coordinates, mapping these ancient locations using `folium`.
+
+- [Mark_Top_Ten_Verbs.ipynb](./Mark_Top_Ten_Verbs.ipynb): A brief analysis identifying and visualizing the ten most frequently occurring verbs in the Gospel of Mark using the `grc_odycy_joint_trf` model.
+
+- [Mark_Vocabulary_Coverage.ipynb](./Mark_Vocabulary_Coverage.ipynb): Analyzes the vocabulary of the Gospel of Mark to determine the number of unique words (lemmas) needed to reach different comprehension thresholds. It demonstrates the Pareto principle in language learning, showing that mastering just 215 unique words yields 80% comprehension of the entire book, making it an excellent resource for beginners studying Ancient Greek.
+
+- [TANTT.ipynb](./TANTT.ipynb): Demonstrates how to load, parse, and explore the **Translators Amalgamated Greek NT (TAGNT)** dataset. It takes raw text files containing the entire New Testament and converts them into a clean, searchable table (DataFrame) with user-friendly labels (Bible Reference, Greek Text, Lemma, Strong's Number, and full explicit Grammar/Morphology descriptions). Perfect for non-specialists wanting to search specific verses like John 1:1.
+
+- [Mt4_Deut6_8_Analysis.ipynb](./Mt4_Deut6_8_Analysis.ipynb): An advanced NLP analysis notebook. It uses the `odyCy` transformer model to identify and analyze intertextual relationships (explicit quotes, allusions, keyword echoes) between the Greek Septuagint (LXX) version of Deuteronomy 6-8 and the Gospel of Matthew 4. 
 
 - [test.ipynb](./test.ipynb): A basic testing and demonstration notebook showing how to set up and process Ancient Greek text (like the Gospel of Mark) using the `spaCy` framework and the `odyCy` transformer model.
 
