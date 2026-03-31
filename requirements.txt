@@ -13,6 +13,7 @@ requests
 matplotlib
 seaborn
 folium
+scipy
 
 # Custom transformer models
 # Model is installed manually via the instructions in README.md

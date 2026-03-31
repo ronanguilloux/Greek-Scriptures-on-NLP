@@ -2,10 +2,11 @@
 
 🏛 Ancient Greek NT original texts, processed using Natural Language Processing (NLP).
 
-NLP if fun because... 
-- it make you realize that, in Mark, [the most common verb](./Mark_Top_Ten_Verbs.ipynb) is `λέγω` 
+NLP if fun because...
+- it make you realize that, in Mark, [the most common verb](./Mark_Top_Ten_Verbs.ipynb) is `λέγω`
 - it [generate for you a map](./Mark_Places_Names-Geoloc.ipynb) of all the places Jesus went to.
-- it tells you that if you learn your first 215 greek words, [you can already read 80% of Mark](./Mark_Vocabulary_Coverage.ipynb). 
+- it tells you that if you learn your first 215 greek words, [you can already read 80% of Mark](./Mark_Vocabulary_Coverage.ipynb).
+- it can [draw the narrative arc of Mark](./Mark_Event_Arc.ipynb) from the morphology of its Greek verbs alone.
 
 ## Project Notebooks
 
@@ -34,6 +35,9 @@ This repository includes several Jupyter notebooks designed to demonstrate and a
   
 - [Translators Amalgamated Greek NT (TAGNT) Parser](./TANTT.ipynb): Transforms the raw Tyndale Amalgamated Greek New Testament (TAGNT) data files into a clean, searchable table. Anyone can look up a verse like John 1:1 and instantly see each Greek word alongside its root form, Strong’s number, and a plain-English grammatical label.
   *Technical:* File parsing and DataFrame construction with `pandas`. Morphological codes expanded via dictionary lookup against STEPBible TAGNT/TBESG files. No ML/NLP model used.
+
+- [Marc — Arc Narratif (Réalité Morphologique) 📈](./Mark_Event_Arc.ipynb): Produces a narrative arc curve for the Gospel of Mark based on Greek verbal morphology — comparable to what BookNLP does for English via semantic heuristics, but grounded in philologically verified data. Every verb is scored on a realis/irrealis axis (indicative aorist = peak narrative density; subjunctives and imperatives = discourse valleys). The average score per chapter traces an event arc across all 16 chapters, then extended to a four-gospel comparative chart.
+  *Technical:* Uses `text-fabric` + `CenterBLC/N1904` features (`mood`, `tense`, `voice`). Chapter-level scoring via a `REALIS_MAP` weight table. Smoothed arc via `scipy` Savitzky-Golay filter. Includes participle attendant-circumstance detection (the `ἀπεκρίθη εἶπεν` pattern) and optional French parallel text display via the local BJ (Bible de Jérusalem) dataset.
 
 - [Analyse des citations et échos de Deutéronome 6-8 dans Matthieu 4](./Mt4_Deut6_8_Analysis.ipynb): Investigates the literary relationship between Deuteronomy 6–8 (Greek Septuagint) and Matthew 4 — the temptation narrative. The notebook detects exact quotations, thematic echoes, and vocabulary overlap, making visible the intertextual fabric that a Greek reader would have recognized.
   *Technical:* Three-method intertextual analysis: (1) exact n-gram matching for citations, (2) keyword density analysis, (3) cosine similarity on transformer embeddings for semantic overlap. Powered by `spaCy` + `grc_odycy_joint_trf`. Custom Greek stopword list; results presented via `pandas` DataFrames.
