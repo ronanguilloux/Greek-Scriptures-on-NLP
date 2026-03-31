@@ -23,6 +23,9 @@ On a Macbook Air M4 / 16 Go, the parsing of the full Mark (Greek) text takes onl
 
 This repository includes several Jupyter notebooks designed to demonstrate and analyze Ancient Greek texts using different approaches:
 
+- [Introduction to Text-Fabric: A Microscope for Ancient Texts 🔬](./Intro_to_TextFabric_N1904.ipynb): An accessible, code-light introduction to reading ancient texts as interconnected databases. It demonstrates how to load a specific verse (Mark 1:1), peer "under the hood" at the grammatical tags (features) assigned to each word, and generate a beautiful, 3-line interlinear display showing the original Greek, its root dictionary form, and a literal English translation.
+  *Technical:* Uses the `text-fabric` Python library and the local `CenterBLC/N1904` Greek New Testament dataset. Reconstructs text displays via `pandas` DataFrames and custom HTML/CSS rendering.
+
 - [Visualizing Grammatical Dependencies in Mark 4:14 🌱](./Mark_4_14_Dependency_Visualization.ipynb): Renders a visual diagram of the grammatical structure of a single Greek verse (Mark 4:14 — "The farmer sows the word"), showing which words depend on which — like a sentence diagram. A good entry point for understanding how Ancient Greek syntax works.
   *Technical:* Dependency parsing via `spaCy` with the `grc_odycy_joint_trf` transformer model. Visualization rendered inline using `displaCy`.
 

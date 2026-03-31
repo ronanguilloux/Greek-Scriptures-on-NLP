@@ -5,6 +5,7 @@ jupyter
 # NLP libraries
 spacy==3.7.5
 spacy[transformers,apple]==3.7.5
+text-fabric
 
 # Data & Analysis
 pandas
