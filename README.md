@@ -2,8 +2,10 @@
 
 🏛 Ancient Greek NT original texts, processed using Natural Language Processing (NLP).
 
-NLP make you realize that
-- in Mark,  'the 10 most common verbs' of Mark, it places famous NT locations on a map, and knows that if you learn your first 215 ancient greek words, you can already read 80% of Mark. 
+NLP if fun because... 
+- it make you realize that, in Mark, [the most common verb](./Mark_Top_Ten_Verbs.ipynb) is `λέγω` 
+- it [generate for you a map](./Mark_Places_Names-Geoloc.ipynb) of all the places Jesus went to.
+- it tells you that if you learn your first 215 greek words, [you can already read 80% of Mark](./Mark_Vocabulary_Coverage.ipynb). 
 
 ## Project Notebooks
 
