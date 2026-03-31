@@ -1,23 +1,9 @@
 # Jupyter Notebook NT, Ancient Greek and NLP. 
 
-What the Sheol is that? 🤣 
+🏛 Ancient Greek NT original texts, processed using Natural Language Processing (NLP).
 
-- 🏛 Ancient Greek NT original texts
-- 🤖 Natural Language Processing (NLP) Python libraries 
-
-This project uses `spaCy` Python lib and and the [OdyCy Transformer model](https://centre-for-humanities-computing.github.io/odyCy/) ([Hugginface](https://huggingface.co/chcaa/grc_odycy_joint_trf), [Github](https://github.com/centre-for-humanities-computing/odyCy)) for Ancient Greek.
-
-[`spaCy`](https://spacy.io/) is an industrial-strength, production-ready Python library for advanced Natural Language Processing (NLP). It leverages optimized pipelines and pre-trained transformer models to deliver high-performance tokenization, Named Entity Recognition (NER), and dependency parsing at scale.
-
-[OdyCy](https://centre-for-humanities-computing.github.io/odyCy/) is extending `spaCy`: it's a transformer-based NLP library for Ancient Greek, capable of part-of-speech tagging, morphological analysis, dependency parsing, lemmatization and more.
-
-[`Jupyter`](https://jupyter.org/) Notebook is an open-source, web-based interactive computing environment that enables developers to integrate live code, narrative documentation, and rich-media visualizations into a single reproducible document for data science and machine learning workflows. See [https://developers.google.com/colab](https://developers.google.com/colab) (can leverages GDrive-hosted notebooks).
-
-Python is the more indented than any beast of the Shell, but has nothing to do with Gn 3:1.
-
-### Performances
-
-On a Macbook Air M4 / 16 Go, the parsing of the full Mark (Greek) text takes only ~8 seconds.
+NLP make you realize that
+- in Mark,  'the 10 most common verbs' of Mark, it places famous NT locations on a map, and knows that if you learn your first 215 ancient greek words, you can already read 80% of Mark. 
 
 ## Project Notebooks
 
@@ -53,17 +39,50 @@ This repository includes several Jupyter notebooks designed to demonstrate and a
 - [Mark on spaCy](./test.ipynb): A minimal working example showing how to load Ancient Greek text and extract basic linguistic information — tokens, lemmas, and parts of speech. A good starting point before diving into the more specialized notebooks.
   *Technical:* Basic tokenization, lemmatization, and POS tagging via `spaCy` + `grc_odycy_joint_trf` on GPU (Apple MPS). Verifies model setup and hardware availability.
 
+## I'm a nerd, show me the code
+
+'What the Sheol is that? 🤣', you ask? Here's the nerdy stuff:
+
+This project uses `spaCy` Python lib and and the [OdyCy Transformer model](https://centre-for-humanities-computing.github.io/odyCy/) ([Hugginface](https://huggingface.co/chcaa/grc_odycy_joint_trf), [Github](https://github.com/centre-for-humanities-computing/odyCy)) for Ancient Greek.
+
+[`spaCy`](https://spacy.io/) is an industrial-strength, production-ready Python library for advanced Natural Language Processing (NLP). It leverages optimized pipelines and pre-trained transformer models to deliver high-performance tokenization, Named Entity Recognition (NER), and dependency parsing at scale.
+
+[OdyCy](https://centre-for-humanities-computing.github.io/odyCy/) is extending `spaCy`: it's a transformer-based NLP library for Ancient Greek, capable of part-of-speech tagging, morphological analysis, dependency parsing, lemmatization and more.
+
+[`Jupyter`](https://jupyter.org/) Notebook is an open-source, web-based interactive computing environment that enables developers to integrate live code, narrative documentation, and rich-media visualizations into a single reproducible document for data science and machine learning workflows. See [https://developers.google.com/colab](https://developers.google.com/colab) (can leverages GDrive-hosted notebooks).
+
+[`Text-Fabric`](https://github.com/annotation/text-fabric) is a powerful Python library and framework designed to facilitate the analysis and manipulation of large-scale textual data, particularly in the context of ancient languages and biblical texts.
+
+The TF-preprocessed Greek New Testament (Nestle 1904, seventh edition: reprint 1913) comes from [Center of Biblical Languages and Computing (CBLC)](https://centerblc.github.io/N1904/) from the Andrews University (MI, USA).
+
+Python is the more indented than any beast of the Shell, but has nothing to do with Gn 3:1.
+
+### Performances
+
+On a Macbook Air M4 / 16 Go, the parsing of the full Mark (Greek) text takes only ~8 seconds.
+
+### NLP approaches
+
+This project offers 2 main approaches of NLP:
+
+- `odyCy` is a pipeline (sequential NLP processingr, predicting features from raw text). odyCy *computes* linguistic annotations on the fly — it runs raw Greek text through a sequence of NLP components ( via spaCy + an Ancient Greek-specific fine-tuned BERT transformer, a morphologizer, a lemmatizer) to *predict* features such as lemma, part of speech, and dependency relations.
+- `Text-Fabric`, by contrast, is a pre-annotated database (you query it, not compute it). It already *stores* annotations that were curated by scholars ahead of time: you are querying a pre-built, human-verified dataset rather than asking a model to infer anything. 
+
+The two approaches are complementary — `odyCy` is flexible and can process any Greek text, while `Text-Fabric` gives you authoritative, database-structured access to a specific critical edition.
+
 ## Step Data
 
-Inside the STEPBible-Data clone, you find specific files for NT work:
+Inside the [STEPBible-Data](https://github.com/STEPBible/STEPBible-Data) submodule clone, you find specific data for NT work, provided by the Tyndale House Library, Cambridge (UK). The STEPBible Data Repository (CC BY 4.0) datasets are based on work by scholars at Tyndale House. TH is the editor of the THGNT, under the supervision of Dr. Dirk Jongkind (St. Edmund’s College, University of Cambridge) and Dr. Peter Williams (Tyndale House, Cambridge). It contains
 
-TANTT (Tyndale Amalgamated NT Tagged Texts): The "gold mine" for NT study. It contains the Greek text of the New Testament with every word tagged for its lemma (root form), Strong’s number, and morphological code.
+- TANTT (Tyndale Amalgamated NT Tagged Texts): The "gold mine" for NT study. It contains the Greek text of the New Testament with every word tagged for its lemma (root form), Strong’s number, and morphological code.
 
-TBESG (Tyndale Brief Lexicon of Extended Strongs for Greek): A Greek-English lexicon based on corrected Abbott-Smith data. It maps Strong’s numbers to concise English definitions.
+- TBESG (Tyndale Brief Lexicon of Extended Strongs for Greek): A Greek-English lexicon based on corrected Abbott-Smith data. It maps Strong’s numbers to concise English definitions.
 
-TIPNR (Tyndale Individualised Proper Names): Excellent for tracking specific people and places across the NT, distinguishing between different "Marys" or "Johns."
+- TIPNR (Tyndale Individualised Proper Names): Excellent for tracking specific people and places across the NT, distinguishing between different "Marys" or "Johns."
 
-TVTMS (Tyndale Versification Traditions): Useful if you need to align different Bible versions (e.g., KJV vs. Nestle-Aland) where verse numbering differs.
+- TVTMS (Tyndale Versification Traditions): Useful if you need to align different Bible versions (e.g., KJV vs. Nestle-Aland) where verse numbering differs.
+
+And many other [great things](https://github.com/STEPBible/STEPBible-Data/blob/master/README.md) to discover.
 
 ## Prerequisites
 
